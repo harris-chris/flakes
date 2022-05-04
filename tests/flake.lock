@@ -45,64 +45,18 @@
         "type": "github"
       }
     },
-    "flake-utils_4": {
-      "locked": {
-        "lastModified": 1649676176,
-        "narHash": "sha256-OWKJratjt2RW151VUlJPRALb7OU2S5s+f0vLj4o1bHM=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "a4b154ebbdc88c8498a5c7b01589addc9e9cb678",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
     "get-workspace-name": {
       "inputs": {
-        "flake-utils": "flake-utils_2",
-        "nixpkgs": "nixpkgs"
-      },
-      "locked": {
-        "narHash": "sha256-VWLOjobhv2+47RnYMA+08RJvTPdXziwqC132w1Uz+oc=",
-        "path": "get-workspace-name",
-        "type": "path"
-      },
-      "original": {
-        "path": "get-workspace-name",
-        "type": "path"
-      }
-    },
-    "get-workspace-name_2": {
-      "inputs": {
-        "flake-utils": "flake-utils_4",
+        "flake-utils": "flake-utils_3",
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
         "narHash": "sha256-VWLOjobhv2+47RnYMA+08RJvTPdXziwqC132w1Uz+oc=",
-        "path": "../get-workspace-name",
+        "path": "get-workspace-name",
         "type": "path"
       },
       "original": {
-        "path": "../get-workspace-name",
-        "type": "path"
-      }
-    },
-    "kakoune-workspace": {
-      "inputs": {
-        "flake-utils": "flake-utils_3",
-        "get-workspace-name": "get-workspace-name_2",
-        "nixpkgs": "nixpkgs_3"
-      },
-      "locked": {
-        "narHash": "sha256-1A74eKQeTd1LkU0ZksN09Km6kArIYApvw/BdN9e8mvQ=",
-        "path": "kakoune-workspace",
-        "type": "path"
-      },
-      "original": {
-        "path": "kakoune-workspace",
+        "path": "get-workspace-name",
         "type": "path"
       }
     },
@@ -154,28 +108,31 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
+    "personal-pkgs": {
+      "inputs": {
+        "flake-utils": "flake-utils_2",
+        "get-workspace-name": "get-workspace-name",
+        "nixpkgs": "nixpkgs_3"
+      },
       "locked": {
-        "lastModified": 1651571855,
-        "narHash": "sha256-KZie6c2J2DUPLjG2PkYSwGLvD6RygA3TxZSPQpctbNI=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "fd43ce017d4c95f47166d28664a004f57458a0b1",
+        "lastModified": 1651630429,
+        "narHash": "sha256-GWzHvPMgy5ROv2oHvz9QyzDWQNky3SOixp77+BuxqV4=",
+        "owner": "harris-chris",
+        "repo": "flakes",
+        "rev": "23f5392800420e0b82f8379c1e5c0120bd17124b",
         "type": "github"
       },
       "original": {
-        "owner": "NixOS",
-        "ref": "nixos-21.11",
-        "repo": "nixpkgs",
+        "owner": "harris-chris",
+        "repo": "flakes",
         "type": "github"
       }
     },
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "get-workspace-name": "get-workspace-name",
-        "kakoune-workspace": "kakoune-workspace",
-        "nixpkgs": "nixpkgs_4"
+        "nixpkgs": "nixpkgs",
+        "personal-pkgs": "personal-pkgs"
       }
     }
   },
