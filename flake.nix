@@ -23,5 +23,8 @@
         devShell = pkgs.mkShell {
           buildInputs = builtins.attrValues packages;
         };
+        overlays = final: prev: {
+          inherit (packages) getworkspacename kakoune-workspace;
+        };
       });
 }
