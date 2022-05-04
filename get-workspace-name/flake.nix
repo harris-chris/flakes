@@ -7,8 +7,7 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-      in {
-        defaultPackage = pkgs.stdenv.mkDerivation rec {
+        getworkspacename = pkgs.stdenv.mkDerivation rec {
           name = "getworkspacename";
           src = ./getWorkspaceName.cpp;
           buildInputs = [ pkgs.coreutils ];
@@ -23,6 +22,11 @@
             chmod +x $out/bin/getworkspacename
           '';
           gcc = pkgs.gcc;
+        };
+      in {
+        defaultPackage = getworkspacename;
+        devShell = pkgs.mkShell {
+          buildInputs = [ getworkspacename ];
         };
       });
 }
