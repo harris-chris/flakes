@@ -15,6 +15,10 @@
           desktop="$(${getworkspacename}/bin/getworkspacename)"
           kakprofile=$(which kak)
           kakoune=$(readlink -f "$kakprofile")
+          if [[ -z "$kakoune" ]]; then
+            echo "Could not find kakoune installed"
+            exit 1
+          fi
 
           # bspc result was empty, so most likely not using bspwm
           [ -z "$desktop" ] && exec $kakoune "$@"
@@ -31,7 +35,6 @@
         kakoune-workspace = pkgs.writeShellApplication {
           name = "kk";
           text = script;
-          runtimeInputs = [ pkgs.kakoune ];
         };
       in rec {
         defaultPackage = kakoune-workspace;

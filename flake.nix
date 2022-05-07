@@ -20,6 +20,7 @@
           getworkspacename = get-workspace-name.defaultPackage.${system};
           kakoune-workspace = kakoune-workspace.defaultPackage.${system};
         };
+        # REMEMBER YOU MAY NEED TO NIX FLAKE UPDATE AS WELL FOR DEVSHELL
         devShell = pkgs.mkShell {
           buildInputs = builtins.attrValues packages;
         };
