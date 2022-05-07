@@ -97,7 +97,7 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "narHash": "sha256-h9+QwKjm2LvJ1YLZTGM9pXvF1KG260bFriMnwty4AgM=",
+        "narHash": "sha256-14jhFHN9I/SOR9u4KOcTkj3uiSQXtvMFgHr//So6etk=",
         "path": "kakoune-workspace",
         "type": "path"
       },
