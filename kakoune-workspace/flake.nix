@@ -32,6 +32,14 @@
               exec $kakoune -s "$desktop" "$@"
           fi
         '';
+        jitsiItem = pkgs.makeDesktopItem {
+          name = "Jitsi";
+          exec = "jitsi";
+          comment = "VoIP and Instant Messaging client";
+          desktopName = "Jitsi";
+          genericName = "Instant Messaging";
+          categories = [ "Chat" ];
+        };
         kakoune-workspace = pkgs.writeShellApplication {
           name = "kk";
           text = script;

@@ -60,6 +60,21 @@
         "type": "github"
       }
     },
+    "flake-utils_5": {
+      "locked": {
+        "lastModified": 1649676176,
+        "narHash": "sha256-OWKJratjt2RW151VUlJPRALb7OU2S5s+f0vLj4o1bHM=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "a4b154ebbdc88c8498a5c7b01589addc9e9cb678",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "get-workspace-name": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -97,7 +112,7 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "narHash": "sha256-14jhFHN9I/SOR9u4KOcTkj3uiSQXtvMFgHr//So6etk=",
+        "narHash": "sha256-IO3dYnmdB4pdYzg6Yo9aWePSkPgkRfZxd1ez+T5VnHI=",
         "path": "kakoune-workspace",
         "type": "path"
       },
@@ -170,12 +185,44 @@
         "type": "github"
       }
     },
+    "nixpkgs_5": {
+      "locked": {
+        "lastModified": 1641240519,
+        "narHash": "sha256-c4HeaYPcvRoj45XUY3RWuoVCtpBOMF4NDur+B655SI8=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "c82b46413401efa740a0b994f52e9903a4f6dcd5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "c82b46413401efa740a0b994f52e9903a4f6dcd5",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
         "get-workspace-name": "get-workspace-name",
         "kakoune-workspace": "kakoune-workspace",
-        "nixpkgs": "nixpkgs_4"
+        "nixpkgs": "nixpkgs_4",
+        "signal-desktop-compat": "signal-desktop-compat"
+      }
+    },
+    "signal-desktop-compat": {
+      "inputs": {
+        "flake-utils": "flake-utils_5",
+        "nixpkgs": "nixpkgs_5"
+      },
+      "locked": {
+        "narHash": "sha256-p7suf1k2XxBLI6US0htlaMmXWAoUk8Q0HRZDOFpG2V0=",
+        "path": "signal-desktop-compat",
+        "type": "path"
+      },
+      "original": {
+        "path": "signal-desktop-compat",
+        "type": "path"
       }
     }
   },
