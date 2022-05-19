@@ -3,16 +3,16 @@
     nixpkgs.url = github:NixOS/nixpkgs/nixos-21.11;
     flake-utils.url = github:numtide/flake-utils;
     get-workspace-name.url = path:./get-workspace-name;
-    kakoune-workspace.url = path:./kakoune-workspace;
-    signal-desktop-compat.url = path:./signal-desktop-compat;
+    # kakoune-workspace.url = path:./kakoune-workspace;
+    # signal-desktop-compat.url = path:./signal-desktop-compat;
   };
   outputs = {
     self
     , nixpkgs
     , flake-utils
     , get-workspace-name
-    , kakoune-workspace
-    , signal-desktop-compat
+    # , kakoune-workspace
+    # , signal-desktop-compat
   }:
     flake-utils.lib.eachDefaultSystem (system:
       let
@@ -29,7 +29,7 @@
           buildInputs = builtins.attrValues packages;
         };
         overlays = final: prev: {
-          inherit (packages) get-workspace-name kakoune-workspace signal-desktop;
+          inherit (packages) get-workspace-name; # kakoune-workspace signal-desktop;
         };
       });
 }
