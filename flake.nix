@@ -2,9 +2,9 @@
   inputs = {
     nixpkgs.url = github:NixOS/nixpkgs/nixos-21.11;
     flake-utils.url = github:numtide/flake-utils;
-    get-workspace-name.url = "path:get-workspace-name";
-    kakoune-workspace.url = "path:kakoune-workspace";
-    signal-desktop-compat.url = "path:signal-desktop-compat";
+    get-workspace-name.url = path:./get-workspace-name;
+    kakoune-workspace.url = path:./kakoune-workspace;
+    signal-desktop-compat.url = path:./signal-desktop-compat;
   };
   outputs = {
     self
