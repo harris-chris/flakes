@@ -18,8 +18,17 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
       in rec {
-        packages.signal-desktop = signal-desktop.defaultPackage.${system};
-        packages.get-workspace-name = get-workspace-name.defaultPackage.${system};
-        packages.kakoune-workspace = kakoune-workspace.defaultPackage.${system};
+        packages = flake-utils.lib.flattenTree {
+          get-workspace-name = get-workspace-name.defaultPackage.${system};
+          kakoune-workspace = kakoune-workspace.defaultPackage.${system};
+          signal-desktop = signal-desktop.defaultPackage.${system};
+        };
+        # REMEMBER YOU MAY NEED TO NIX FLAKE UPDATE AS WELL FOR DEVSHELL
+        devShell = pkgs.mkShell {
+          buildInputs = builtins.attrValues packages;
+        };
+        overlays = final: prev: {
+          inherit (packages) get-workspace-name kakoune-workspace signal-desktop;
+        };
       });
 }
