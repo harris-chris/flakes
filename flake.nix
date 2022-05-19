@@ -18,11 +18,12 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
       in rec {
-        packages = flake-utils.lib.flattenTree {
-          get-workspace-name = get-workspace-name.defaultPackage.${system};
-          kakoune-workspace = kakoune-workspace.defaultPackage.${system};
-          signal-desktop = signal-desktop-compat.defaultPackage.${system};
-        };
+        # packages = flake-utils.lib.flattenTree {
+        #   get-workspace-name = get-workspace-name.defaultPackage.${system};
+        #   kakoune-workspace = kakoune-workspace.defaultPackage.${system};
+        #   signal-desktop = signal-desktop-compat.defaultPackage.${system};
+        # };
+        packages.get-workspace-name = get-workspace-name.defaultPackage.${system};
         # REMEMBER YOU MAY NEED TO NIX FLAKE UPDATE AS WELL FOR DEVSHELL
         devShell = pkgs.mkShell {
           buildInputs = builtins.attrValues packages;
