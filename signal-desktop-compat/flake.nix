@@ -10,7 +10,6 @@
         signal = pkgs.signal-desktop;
       in {
         defaultPackage = signal;
-        devShell = pkgs.mkShell { buildInputs = [ signal ]; };
       });
 }
 

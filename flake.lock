@@ -66,16 +66,16 @@
       "inputs": {
         "flake-utils": "flake-utils",
         "nixpkgs": "nixpkgs",
-        "signal-desktop-compat": "signal-desktop-compat"
+        "signal-desktop": "signal-desktop"
       }
     },
-    "signal-desktop-compat": {
+    "signal-desktop": {
       "inputs": {
         "flake-utils": "flake-utils_2",
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "narHash": "sha256-p7suf1k2XxBLI6US0htlaMmXWAoUk8Q0HRZDOFpG2V0=",
+        "narHash": "sha256-wnv8E4vpf+UuAJUTXClD/qabkhKrHEsjYfJ3ZUIUXVo=",
         "path": "./signal-desktop-compat",
         "type": "path"
       },
