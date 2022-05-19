@@ -19,7 +19,7 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in rec {
         packages = flake-utils.lib.flattenTree {
-          getworkspacename = get-workspace-name.defaultPackage.${system};
+          get-workspace-name = get-workspace-name.defaultPackage.${system};
           kakoune-workspace = kakoune-workspace.defaultPackage.${system};
           signal-desktop = signal-desktop-compat.defaultPackage.${system};
         };
@@ -28,7 +28,7 @@
           buildInputs = builtins.attrValues packages;
         };
         overlays = final: prev: {
-          inherit (packages) getworkspacename kakoune-workspace signal-desktop;
+          inherit (packages) get-workspace-name kakoune-workspace signal-desktop;
         };
       });
 }
