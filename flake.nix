@@ -2,15 +2,13 @@
   inputs = {
     nixpkgs.url = github:NixOS/nixpkgs/nixos-21.11;
     flake-utils.url = github:numtide/flake-utils;
-    signal-desktop.url = path:./signal-desktop-compat;
-    get-workspace-name.url = path:./get-workspace-name;
-    kakoune-workspace.url = path:./kakoune-workspace;
+    get-workspace-name.url = github:harris-chris/get-workspace-name;
+    kakoune-workspace.url = github:harris-chris/kakoune-workspace;
   };
   outputs = {
     self
     , nixpkgs
     , flake-utils
-    , signal-desktop
     , get-workspace-name
     , kakoune-workspace
   }:
@@ -21,14 +19,13 @@
         packages = flake-utils.lib.flattenTree {
           get-workspace-name = get-workspace-name.defaultPackage.${system};
           kakoune-workspace = kakoune-workspace.defaultPackage.${system};
-          signal-desktop = signal-desktop.defaultPackage.${system};
         };
         # REMEMBER YOU MAY NEED TO NIX FLAKE UPDATE AS WELL FOR DEVSHELL
         devShell = pkgs.mkShell {
           buildInputs = builtins.attrValues packages;
         };
         overlays = final: prev: {
-          inherit (packages) get-workspace-name kakoune-workspace signal-desktop;
+          inherit (packages) get-workspace-name kakoune-workspace;
         };
       });
 }
