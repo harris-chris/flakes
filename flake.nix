@@ -14,7 +14,7 @@
   }:
     flake-utils.lib.eachDefaultSystem (system:
       let
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = import nixpkgs { inherit system; };
       in rec {
         packages = flake-utils.lib.flattenTree {
           get-workspace-name = get-workspace-name.defaultPackage.${system};
