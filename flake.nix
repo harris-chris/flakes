@@ -28,11 +28,14 @@
       rev = "8ad5e8132c5dcf977e308e7bf5517cc6cc0bf7d8";
     }) { inherit system; }).openfortivpn;
 
-    getPersonalPackages = pkgs: with pkgs; {
-      inherit getworkspacename kakoune-workspace openfortivpn signal-desktop;
+    getPersonalPackages = pkgs: {
+      inherit openfortivpn;
+      getworkspacename = pkgs.getworkspacename;
+      kakoune-workspace = pkgs.kakoune-workspace;
+      signal-desktop = pkgs.signal-desktop;
     };
   in {
     packages.${system} = getPersonalPackages pkgs;
-    overlays.default = final: prev: getPersonalPackages final;
+    overlays.default = final: prev: getPersonalPackages prev;
   };
 }
