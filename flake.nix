@@ -36,6 +36,6 @@
     };
   in {
     packages.${system} = getPersonalPackages pkgs;
-    overlays.default = final: prev: getPersonalPackages prev;
+    overlays.default = final: prev: getPersonalPackages final;
   };
 }
