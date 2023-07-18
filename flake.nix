@@ -1,27 +1,38 @@
 {
   inputs = {
     nixpkgs.url = github:NixOS/nixpkgs/nixos-unstable;
-    flake-utils.url = github:numtide/flake-utils;
-    get-workspace-name.url = github:harris-chris/get-workspace-name;
-    kakoune-workspace.url = github:harris-chris/kakoune-workspace;
+    get_workspace_name.url = github:harris-chris/get-workspace-name;
+    kakoune_workspace.url = github:harris-chris/kakoune-workspace;
   };
   outputs = {
     self
     , nixpkgs
-    , flake-utils
-    , get-workspace-name
-    , kakoune-workspace
+    , get_workspace_name
+    , kakoune_workspace
   }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = import nixpkgs { inherit system; };
-        getPersonalPackages = pkgs: flake-utils.lib.flattenTree {
-          get-workspace-name = get-workspace-name.defaultPackage.${system};
-          kakoune-workspace = kakoune-workspace.defaultPackage.${system};
-          signal-desktop = pkgs.signal-desktop;
-        };
-      in {
-        packages = getPersonalPackages pkgs;
-        overlays = final: prev:  getPersonalPackages prev;
-      });
+  let
+    system = "x86_64-linux";
+
+    pkgs = import nixpkgs {
+      inherit system;
+      overlays = [
+        get_workspace_name.overlays.default
+        kakoune_workspace.overlays.default
+      ];
+    };
+
+    openfortivpn = (import (builtins.fetchGit {
+      name = "my-old-revision";
+      url = "https://github.com/NixOS/nixpkgs/";
+      ref = "refs/heads/nixpkgs-unstable";
+      rev = "8ad5e8132c5dcf977e308e7bf5517cc6cc0bf7d8";
+    }) { inherit system; }).openfortivpn;
+
+    getPersonalPackages = pkgs: with pkgs; {
+      inherit getworkspacename kakoune-workspace openfortivpn signal-desktop;
+    };
+  in {
+    packages.${system} = getPersonalPackages pkgs;
+    overlays.default = final: prev: getPersonalPackages final;
+  };
 }
